@@ -1,25 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+ <head>
+    <title>Welcome to my page</title>
+ </head>
+ <body>
+    <h1>Welcome!</h1>
+    <form action="/greet" method="get">
+      <label for="userName">What's your name?</label>
+      <input type="text" id="userName" name="userName" />
+      <button type="submit">Submit</button>
+    </form>
+    <% if (message) { %>
+      <p><%= message %></p>
+    <% } %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Express test</title>
-</head>
+    <h2>TODO List</h2>
+    <form action="/task" method="post">
+        <label for="newTask">Add a new task:</label>
+        <input type="text" id="newTask" name="newTask" />
+        <button type="submit">Submit</button>
+      </form>
+      <h2>TODO List</h2>
+      <ul id="tasks-list">
+      </ul>
+  
+      <p><a href="/">Go back</a></p>
+      <script >
+        document.getElementById('add-task-form').addEventListener('submit', (event) => {
+ event.preventDefault();
 
-<body>
-    <% if (locals.error) { %>
-        <h3>
-            <%= error %>
-        </h3>
-        <% } %>
-            <form action="/greet" method="get">
-                Register:
-                <input type="text" name="name" id="name" placeholder="Name">
-                <input type="submit" value="go next">
-            </form>
+ const newTask = document.getElementById('newTask').value;
+ const tasksList = document.getElementById('tasks-list');
 
-</body>
+ const listItem = document.createElement('li');
+ listItem.textContent = newTask;
 
+ tasksList.appendChild(listItem);
+});
+      </script>
+
+    <p><a href="/">Go back</a></p>
+ </body>
 </html>
