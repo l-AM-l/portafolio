@@ -1,3 +1,159 @@
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
+    
+}
+
+.container {
+    position: relative;
+    display:block;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.borderRight {
+    position: absolute;
+    background-color: white;
+    
+    width: 10%;
+    height: 100%;
+    margin-left: 0%;
+    border-right: 5px solid black;
+}
+
+.borderRight1{
+    height: 70%;
+    border-bottom: 5px solid black;
+
+   
+}
+.borderRight2{
+    height: 20%;    
+    border-bottom: 5px solid black;
+
+
+
+}
+.borderRight3{
+    height: 5%;
+    
+}
+
+.secondMiddle{
+    position: absolute;
+    
+    left: 10%;
+    width: 40%;
+    height: 100%;
+    border-right: 5px solid black;
+
+    
+}
+.secondMiddle1{
+    height: 70%;
+
+
+}
+
+.secondMiddle2{
+    height: 20%;
+    background-color: royalblue;
+    border-left: 5px solid black;
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+
+
+
+}
+.secondMiddle3{
+    height: 5%;
+    width: 100%;
+
+
+   
+}
+
+.middle{
+    position: absolute;  
+    left: 50%;  
+    width: 15%;
+    height: 100%;
+    border-right: 5px solid black;
+
+}
+
+.middle1{
+    height: 20%;
+    width: 100%;
+
+}
+
+.middle2{
+    height: 50%;
+    border: 5px solid black;
+    border-right:none;
+    border-bottom: none;
+
+
+}
+.middle3{
+    height: 20%;
+    width: 100%;
+    border-left: none;
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+
+
+}
+
+.last{
+    position: absolute;
+    
+    left: 65%;
+    width: 25%;
+    height: 100%;
+    border-right: 5px solid black;
+
+}
+.last1{
+    height: 20%;
+    width: 100%;
+    border-bottom: 5px solid black;
+
+}
+.last2{
+    height: 50%;
+    border-bottom: 5px solid black;
+    border-left: 5px solid black;
+    background-color: red;
+}
+
+.borderLast{
+    position: absolute;
+    
+    left: 90%;
+    width: 10%;
+    height: 100%;
+    
+}
+
+.borderLast1{
+    background-color: yellow;
+    border-left: 5px solid black;
+
+    height: 20%;
+    width: 100%;
+    
+
+
+}
+.borderLast2{
+    height: 50%;
+    border-bottom: 5px solid black;
+    border-top: 5px solid black;
+    
 }

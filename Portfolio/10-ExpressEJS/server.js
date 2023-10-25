@@ -10,10 +10,17 @@ const longContent =
 let posts = [];
 let name;
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/html/index.html");
+app.get("/", (req, res)=>{
+  // res.sendFile(__dirname+"public/html/index.html");
+  res.render("index", {name});
 });
 
-app.listen(3000, (err) => {
-  console.log("Listening on port 3000");
+app.post("/login", (req, res)=>{
+   name = req.body.name;
+   posts.push({title: "mi title", content: longContent});
+   res.render("home", {name, posts});
+});
+
+app.listen(3000, () => {
+   console.log("listening to port 3000");
 });

@@ -1,44 +1,93 @@
+<!-- public/index.html -->
 <!DOCTYPE html>
-<html>
- <head>
-    <title>Welcome to my page</title>
- </head>
- <body>
-    <h1>Welcome!</h1>
-    <form action="/greet" method="get">
-      <label for="userName">What's your name?</label>
-      <input type="text" id="userName" name="userName" />
-      <button type="submit">Submit</button>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO List</title>
+</head>
+<body>
+    <% if (locals.error) { %>
+        <h3>
+            <%= error %>
+        </h3>
+        <% } %>
+            <form action="/greet" method="get">
+                Register:
+                <input type="text" name="name" id="name" placeholder="Name">
+                <input type="submit" value="go next">
+            </form>
+            
+        </body>
+      
+            <br>
+    
+   
+    <h1>TODO List</h1>
+    <form action="/task" method="POST">
+        <input type="text" name="task" placeholder="Add a new task" required>
+        <button type="submit">Add</button>
     </form>
-    <% if (message) { %>
-      <p><%= message %></p>
-    <% } %>
+    <ul id="taskList">
+        
+    </ul>
 
-    <h2>TODO List</h2>
-    <form action="/task" method="post">
-        <label for="newTask">Add a new task:</label>
-        <input type="text" id="newTask" name="newTask" />
-        <button type="submit">Submit</button>
-      </form>
-      <h2>TODO List</h2>
-      <ul id="tasks-list">
-      </ul>
-  
-      <p><a href="/">Go back</a></p>
-      <script >
-        document.getElementById('add-task-form').addEventListener('submit', (event) => {
- event.preventDefault();
+    <script>
+      const form = document.querySelector('form');
+      const greeting = document.getElementById('greeting');
+    
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = e.target.elements.name.value;
+        greeting.textContent = `Hello, ${name}!`;
+      });
 
- const newTask = document.getElementById('newTask').value;
- const tasksList = document.getElementById('tasks-list');
+      
+    
+        const taskList = document.getElementById('taskList');
 
- const listItem = document.createElement('li');
- listItem.textContent = newTask;
+        function addTask(task, index) {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                ${task}
+                <a href="/task/${index}" onclick="deleteTask(${index})">Delete</a>
+                <button onclick="moveTask(${index, -1})">↑</button>
+                <button onclick="moveTask(${index, 1})">↓</button>
+            `;
+            taskList.appendChild(listItem);
+        }
 
- tasksList.appendChild(listItem);
-});
-      </script>
+      
+        function deleteTask(index) {
+            fetch(`/task/${index}`, { method: 'DELETE' })
+                .then(() => {
+                    taskList.removeChild(taskList.childNodes[index]);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
 
-    <p><a href="/">Go back</a></p>
- </body>
+    
+        function moveTask(index, direction) {
+            const newIndex = index + direction;
+            if (newIndex >= 0 && newIndex < taskList.childNodes.length) {
+                const task = taskList.childNodes[index];
+                taskList.insertBefore(task, taskList.childNodes[newIndex]);
+            }
+        }
+
+        
+        fetch('/task')
+            .then((response) => response.json())
+            .then((data) => {
+                data.forEach((task, index) => {
+                    addTask(task, index);
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    </script>
+</body>
 </html>

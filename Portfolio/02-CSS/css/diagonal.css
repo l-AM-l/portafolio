@@ -1,3 +1,29 @@
-body {
-    margin: 0;
+div{
+    width: 200px;
+    height: 200px;
 }
+
+.top{
+    border: black solid 10px;
+    padding: 20px;
+    
+    background-color: red;
+}
+
+.middle{
+    border: 20px solid;
+   
+    margin-left: 260px;
+    
+    background-color: yellow;
+}
+
+.bottom{
+    border: 10px solid;
+   
+    margin-left: 500px;
+    
+    background-color: blue;
+
+}
+
