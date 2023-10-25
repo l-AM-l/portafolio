@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "node": "^21.0.0",
+    "star-wars-quotes": "^1.0.2",
+    "superheroes": "^3.0.0",
+    "supervillains": "^3.1.0"
+  },
+  "name": "nodebasic",
+  "description": "These exercises will guide us on how to create a simple Node script and how to execute it, as well as understanding how to get to use libraries inside of Node.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ana m",
+  "license": "ISC"
+}

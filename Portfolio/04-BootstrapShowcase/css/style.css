@@ -1,0 +1,22 @@
+body{
+    background-color: lightblue;
+    font-family: "Poppins", sans-serif;
+    
+}
+
+
+
+.blog-card{
+    width: 60vh;
+    
+}
+img{
+    width: 20vh;
+    height: 30vh;
+}
+
+.form-control{
+    
+    width: 60vh;
+    align-items: center;
+}
